@@ -1,0 +1,282 @@
+@if (isArticleOpen) {
+  <router-outlet></router-outlet>
+} @else {
+  <main class="grow pt-20">
+    <div class="min-h-screen bg-[#0a0a0a]">
+      <!-- Hero -->
+      <div class="relative py-20 overflow-hidden">
+        <div class="absolute inset-0 bg-[#0a0a0a]"></div>
+        <div
+          class="absolute inset-0 bg-[linear-gradient(rgba(38,38,38,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(38,38,38,0.5)_1px,transparent_1px)] bg-[size:60px_60px]"
+        ></div>
+        <div class="absolute inset-0">
+          <div
+            class="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl"
+          ></div>
+          <div
+            class="absolute bottom-0 right-1/4 w-96 h-96 bg-yellow-500/5 rounded-full blur-3xl"
+          ></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span class="section-label inline-flex items-center gap-2 mb-6">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
+              ></path>
+            </svg>
+            مدونتنا
+          </span>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+            استكشف <span class="gradient-text">مقالاتنا</span>
+          </h1>
+          <p class="text-xl text-neutral-400 max-w-2xl mx-auto">
+            اكتشف الدروس والرؤى وأفضل الممارسات للتطوير الحديث
+          </p>
+        </div>
+      </div>
+
+      <!-- شريط البحث + التصنيفات -->
+      <div class="sticky top-20 z-40 bg-[#0a0a0a]/90 backdrop-blur-xl border-b border-[#262626]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="relative w-full md:w-80">
+              <input
+                placeholder="ابحث في المقالات..."
+                class="input-dark w-full px-5 py-3 pr-12"
+                type="text"
+              />
+              <svg
+                class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-500"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                ></path>
+              </svg>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-2">
+              <button
+                (click)="filterByCategory(null)"
+                class="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 border border-[#262626]"
+                [class.bg-orange-500]="!selectedCategory"
+                [class.text-white]="!selectedCategory"
+                [class.text-neutral-400]="selectedCategory"
+                [style.background-color]="selectedCategory ? '#161616' : ''"
+              >
+                جميع المقالات
+              </button>
+
+              @for (cat of categories; track cat) {
+                <button
+                  (click)="filterByCategory(cat)"
+                  class="px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 border border-[#262626]"
+                  [class.bg-orange-500]="selectedCategory === cat"
+                  [class.text-white]="selectedCategory === cat"
+                  [class.text-neutral-400]="selectedCategory !== cat"
+                  [style.background-color]="selectedCategory !== cat ? '#161616' : ''"
+                >
+                  {{ cat }}
+                </button>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="mb-8 flex items-center justify-between">
+          <p class="text-neutral-400">
+            عرض <span class="font-bold text-white">{{ paginatedArticles.length }}</span> من
+            <span class="font-bold text-white">{{ filteredArticles.length }}</span> مقالات
+          </p>
+          <div class="flex items-center gap-2">
+            <div class="flex items-center bg-[#161616] border border-[#262626] rounded-xl p-1">
+              <button
+                class="p-2 rounded-lg transition-all duration-300 bg-orange-500 text-white"
+                title="عرض شبكي"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+                  ></path>
+                </svg>
+              </button>
+              <button
+                class="p-2 rounded-lg transition-all duration-300 text-neutral-400 hover:text-white"
+                title="عرض قائمة"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- شبكة المقالات -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          @for (article of paginatedArticles; track article.slug) {
+            <article class="group card overflow-hidden">
+              <a class="block" [routerLink]="['/blog', article.slug]">
+                <div class="relative h-52 overflow-hidden">
+                  <img
+                    [alt]="article.title"
+                    class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                    [src]="article.image"
+                  />
+                  <div
+                    class="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  ></div>
+                  <div class="absolute top-4 right-4">
+                    <span
+                      class="px-3 py-1 bg-[#0a0a0a]/80 backdrop-blur-sm text-white text-xs font-semibold rounded-full border border-[#333333]"
+                    >
+                      {{ article.category }}
+                    </span>
+                  </div>
+                </div>
+                <div class="p-6">
+                  <div class="flex items-center gap-3 text-sm text-neutral-500 mb-3">
+                    <span class="flex items-center gap-1">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                        ></path>
+                      </svg>
+                      {{ article.readTime }}
+                    </span>
+                    <span class="w-1 h-1 bg-neutral-600 rounded-full"></span>
+                    <span>{{ article.date }}</span>
+                  </div>
+                  <h3
+                    class="text-xl font-bold text-white mb-3 group-hover:text-orange-500 transition-colors duration-300 line-clamp-2 leading-tight"
+                  >
+                    {{ article.title }}
+                  </h3>
+                  <p class="text-neutral-400 mb-5 line-clamp-2 text-sm leading-relaxed">
+                    {{ article.excerpt }}
+                  </p>
+                  <div class="flex items-center justify-between pt-4 border-t border-[#262626]">
+                    <div class="flex items-center gap-3">
+                      <img
+                        [alt]="article.author.name"
+                        class="w-9 h-9 rounded-full object-cover ring-2 ring-[#262626]"
+                        [src]="article.author.avatar"
+                      />
+                      <div>
+                        <p class="text-sm font-medium text-white">{{ article.author.name }}</p>
+                        <p class="text-xs text-neutral-500">{{ article.author.role }}</p>
+                      </div>
+                    </div>
+                    <div
+                      class="w-8 h-8 rounded-full bg-orange-500/10 flex items-center justify-center group-hover:bg-orange-500 transition-colors duration-300 border border-orange-500/20 group-hover:border-transparent"
+                    >
+                      <svg
+                        class="w-4 h-4 text-orange-500 group-hover:text-white transition-colors duration-300 rotate-180"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M9 5l7 7-7 7"
+                        ></path>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </article>
+          } @empty {
+            <p class="col-span-full text-center text-neutral-500 py-12">
+              مفيش مقالات في التصنيف ده حاليًا.
+            </p>
+          }
+        </div>
+
+        <!-- Pagination -->
+        @if (totalPages > 1) {
+          <div class="flex justify-center items-center gap-2 mt-12">
+            <button
+              (click)="goToPage(currentPage - 1)"
+              [disabled]="currentPage === 1"
+              class="p-3 rounded-xl border border-[#262626] transition-all duration-300"
+              [class.text-neutral-600]="currentPage === 1"
+              [class.cursor-not-allowed]="currentPage === 1"
+              [class.text-white]="currentPage !== 1"
+              [style.background-color]="currentPage === 1 ? '#0a0a0a' : '#161616'"
+            >
+              <svg class="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 19l-7-7 7-7"
+                ></path>
+              </svg>
+            </button>
+
+            <div class="flex items-center gap-1">
+              @for (page of pageNumbers; track page) {
+                <button
+                  (click)="goToPage(page)"
+                  class="min-w-[44px] h-11 rounded-xl text-sm font-medium transition-all duration-300 border border-[#262626]"
+                  [class.bg-orange-500]="page === currentPage"
+                  [class.text-white]="page === currentPage"
+                  [class.text-neutral-400]="page !== currentPage"
+                  [style.background-color]="page !== currentPage ? '#161616' : ''"
+                >
+                  {{ page }}
+                </button>
+              }
+            </div>
+
+            <button
+              (click)="goToPage(currentPage + 1)"
+              [disabled]="currentPage === totalPages"
+              class="p-3 rounded-xl border border-[#262626] transition-all duration-300"
+              [class.text-neutral-600]="currentPage === totalPages"
+              [class.cursor-not-allowed]="currentPage === totalPages"
+              [class.text-white]="currentPage !== totalPages"
+              [style.background-color]="currentPage === totalPages ? '#0a0a0a' : '#161616'"
+            >
+              <svg class="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <p class="text-center text-neutral-500 mt-4 text-sm">
+            صفحة {{ currentPage }} من {{ totalPages }}
+          </p>
+        }
+      </div>
+    </div>
+  </main>
+}

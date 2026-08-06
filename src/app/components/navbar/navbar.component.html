@@ -1,0 +1,105 @@
+<div class="container">
+  <nav
+    class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-transparent"
+  >
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <!-- Logo -->
+        <a class="flex items-center gap-3 group" routerLink="/">
+          <div
+            class="relative w-12 h-12 rounded-xl overflow-hidden group-hover:scale-105 transition-all duration-300"
+          >
+            <img
+              alt="Photography Logo"
+              class="w-full h-full object-cover"
+              src="https://adasa-psi.vercel.app/assets/logo-GdqARQRt.png"
+            />
+          </div>
+          <div class="flex flex-col">
+            <span
+              class="text-xl font-bold bg-linear-to-r from-white to-neutral-300 bg-clip-text text-transparent"
+              >عدسة</span
+            >
+            <span class="text-xs text-orange-400/80 hidden sm:block tracking-wide"
+              >عالم التصوير الفوتوغرافي</span
+            >
+          </div>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex items-center">
+          <div class="flex items-center bg-[#161616] rounded-full p-1.5 border border-[#262626]">
+            <a
+              routerLink="/"
+              routerLinkActive="bg-linear-to-r from-orange-500 to-orange-600 text-white"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 text-neutral-400 hover:text-white"
+              >الرئيسية</a
+            >
+
+            <a
+              routerLink="/blog"
+              routerLinkActive="bg-linear-to-r from-orange-500 to-orange-600 text-white"
+              class="px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 text-neutral-400 hover:text-white"
+              >المدونة</a
+            >
+
+            <a
+              routerLink="/about"
+              routerLinkActive="bg-linear-to-r from-orange-500 to-orange-600 text-white"
+              class="px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 text-neutral-400 hover:text-white"
+              >من نحن</a
+            >
+          </div>
+        </div>
+
+        <!-- Desktop Right -->
+        <div class="hidden md:flex items-center gap-3">
+          <button
+            class="p-3 text-neutral-500 hover:text-orange-500 hover:bg-[#161616] rounded-xl transition-all duration-300 border border-transparent hover:border-[#262626]"
+          >
+            <!-- استخدام أيقونة Font Awesome للبحث -->
+            <i class="fa-solid fa-magnifying-glass text-lg"></i>
+          </button>
+          <a class="btn-primary text-sm" routerLink="/blog">ابدأ القراءة</a>
+        </div>
+
+        <!-- Mobile Toggle -->
+        <button
+          class="md:hidden p-3 text-neutral-400 hover:text-white hover:bg-[#161616] rounded-xl transition-all duration-300 border border-transparent hover:border-[#262626]"
+        ></button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="md:hidden overflow-hidden transition-all duration-300">
+        <div class="bg-[#161616] backdrop-blur-xl rounded-2xl p-4 border border-[#262626] mb-4">
+          <div class="flex flex-col space-y-1">
+            <a
+              routerLink="/"
+              routerLinkActive="bg-orange-500/10 text-orange-500 border border-orange-500/30"
+              [routerLinkActiveOptions]="{ exact: true }"
+              class="px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 text-neutral-400 hover:bg-[#1a1a1a] hover:text-white"
+              >الرئيسية</a
+            >
+
+            <a
+              routerLink="/blog"
+              routerLinkActive="bg-orange-500/10 text-orange-500 border border-orange-500/30"
+              class="px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 text-neutral-400 hover:bg-[#1a1a1a] hover:text-white"
+              >المدونة</a
+            >
+
+            <a
+              routerLink="/about"
+              routerLinkActive="bg-orange-500/10 text-orange-500 border border-orange-500/30"
+              class="px-4 py-3 rounded-xl text-sm font-medium transition-all duration-300 text-neutral-400 hover:bg-[#1a1a1a] hover:text-white"
+              >من نحن</a
+            >
+
+            <a class="btn-primary text-sm text-center mt-2" routerLink="/blog">ابدأ القراءة</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>

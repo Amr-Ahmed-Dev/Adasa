@@ -1,0 +1,331 @@
+@if (article) {
+  <main class="flex-grow pt-20">
+    <article class="bg-[#0a0a0a] min-h-screen">
+      <!-- صورة الغلاف -->
+      <div class="relative h-[60vh] min-h-[500px] overflow-hidden">
+        <img
+          [alt]="article.title"
+          class="absolute inset-0 w-full h-full object-cover"
+          [src]="article.image"
+        />
+        <div
+          class="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent"
+        ></div>
+        <div class="absolute inset-0 bg-linear-to-r from-[#0a0a0a]/30 to-transparent"></div>
+
+        <!-- Breadcrumb -->
+        <div class="absolute top-8 right-8 left-8">
+          <nav
+            class="inline-flex items-center gap-2 px-4 py-2 bg-black/30 backdrop-blur-md rounded-full text-sm border border-white/10"
+          >
+            <a class="text-white/70 hover:text-white transition-colors" routerLink="/"
+              ><i class="fa-solid fa-home"></i
+            ></a>
+            <i class="fa-solid fa-chevron-left text-white/30 text-xs"></i>
+            <a class="text-white/70 hover:text-white transition-colors" routerLink="/blog"
+              >المدونة</a
+            >
+            <i class="fa-solid fa-chevron-left text-white/30 text-xs"></i>
+            <span class="text-orange-400 font-medium truncate max-w-[200px]">{{
+              article.category
+            }}</span>
+          </nav>
+        </div>
+
+        <!-- عنوان + معلومات -->
+        <div class="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+          <div class="max-w-5xl mx-auto">
+            <div class="flex flex-wrap items-center gap-3 mb-6">
+              <a
+                class="px-4 py-2 bg-orange-500 text-white text-sm font-bold rounded-full hover:bg-orange-600 transition-colors"
+                routerLink="/blog"
+                [queryParams]="{ category: article.category }"
+              >
+                {{ article.category }}
+              </a>
+              <div class="flex items-center gap-4 text-white/70 text-sm">
+                <span class="flex items-center gap-2"
+                  ><i class="fa-regular fa-calendar"></i>{{ article.date }}</span
+                >
+                <span class="flex items-center gap-2"
+                  ><i class="fa-regular fa-clock"></i>{{ article.readTime }}</span
+                >
+              </div>
+            </div>
+            <h1
+              class="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight max-w-4xl"
+            >
+              {{ article.title }}
+            </h1>
+            <div
+              class="flex items-center gap-4 p-4 bg-white/5 backdrop-blur-md rounded-2xl border border-white/10 w-fit"
+            >
+              <img
+                [alt]="article.author.name"
+                class="w-14 h-14 rounded-full object-cover ring-2 ring-orange-500/50"
+                [src]="article.author.avatar"
+              />
+              <div>
+                <p class="font-bold text-white">{{ article.author.name }}</p>
+                <p class="text-sm text-white/60">{{ article.author.role }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid lg:grid-cols-[1fr_300px] gap-12">
+          <!-- المحتوى الرئيسي -->
+          <div class="order-2 lg:order-1">
+            <div
+              class="p-6 bg-linear-to-r from-orange-500/10 to-yellow-500/5 rounded-2xl border border-orange-500/20 mb-10"
+            >
+              <p class="text-lg text-neutral-200 leading-relaxed italic">"{{ article.excerpt }}"</p>
+            </div>
+
+            <div class="prose-custom">
+              <p class="text-neutral-300 leading-relaxed mb-6 text-lg">{{ intro }}</p>
+
+              @for (section of sections; track section.id) {
+                <h2
+                  [id]="section.id"
+                  class="text-2xl md:text-3xl font-bold text-white mt-14 mb-6 flex items-center gap-4 scroll-mt-24"
+                >
+                  <span
+                    class="flex items-center justify-center w-10 h-10 bg-orange-500/10 rounded-xl border border-orange-500/30"
+                  >
+                    <i class="fa-solid fa-camera text-orange-500"></i>
+                  </span>
+                  {{ section.title }}
+                </h2>
+                <p class="text-neutral-300 leading-relaxed mb-6 text-lg">{{ section.body }}</p>
+              }
+            </div>
+
+            <!-- الوسوم -->
+            <div class="mt-14 p-6 bg-[#111111] rounded-2xl border border-[#262626]">
+              <div class="flex items-center gap-3 mb-4">
+                <div
+                  class="w-10 h-10 bg-orange-500/10 rounded-xl flex items-center justify-center border border-orange-500/30"
+                >
+                  <i class="fa-solid fa-tags text-orange-500"></i>
+                </div>
+                <h3 class="font-bold text-white">الوسوم</h3>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                @for (tag of article.tags; track tag) {
+                  <span
+                    class="px-4 py-2 bg-[#1a1a1a] text-neutral-400 text-sm rounded-full border border-[#262626] hover:border-orange-500/50 hover:text-orange-500 transition-colors cursor-pointer"
+                  >
+                    #{{ tag }}
+                  </span>
+                }
+              </div>
+            </div>
+
+            <!-- المشاركة -->
+            <div class="mt-6 p-6 bg-[#111111] rounded-2xl border border-[#262626]">
+              <div class="flex items-center justify-between flex-wrap gap-4">
+                <div class="flex items-center gap-3">
+                  <div
+                    class="w-10 h-10 bg-orange-500/10 rounded-xl flex items-center justify-center border border-orange-500/30"
+                  >
+                    <i class="fa-solid fa-share-nodes text-orange-500"></i>
+                  </div>
+                  <h3 class="font-bold text-white">شارك المقال</h3>
+                </div>
+                <div class="flex gap-2">
+                  <button
+                    class="w-11 h-11 bg-[#1a1a1a] border border-[#262626] rounded-xl flex items-center justify-center text-neutral-400 hover:bg-[#1da1f2] hover:text-white hover:border-transparent transition-all duration-300"
+                  >
+                    <i class="fa-brands fa-x-twitter"></i>
+                  </button>
+                  <button
+                    class="w-11 h-11 bg-[#1a1a1a] border border-[#262626] rounded-xl flex items-center justify-center text-neutral-400 hover:bg-[#0077b5] hover:text-white hover:border-transparent transition-all duration-300"
+                  >
+                    <i class="fa-brands fa-linkedin-in"></i>
+                  </button>
+                  <button
+                    class="w-11 h-11 bg-[#1a1a1a] border border-[#262626] rounded-xl flex items-center justify-center text-neutral-400 hover:bg-[#25d366] hover:text-white hover:border-transparent transition-all duration-300"
+                  >
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </button>
+                  <button
+                    class="w-11 h-11 bg-[#1a1a1a] border border-[#262626] rounded-xl flex items-center justify-center text-neutral-400 hover:bg-orange-500 hover:text-white hover:border-transparent transition-all duration-300"
+                  >
+                    <i class="fa-solid fa-link"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- صندوق الكاتب -->
+            <div
+              class="mt-6 p-8 bg-linear-to-br from-[#161616] to-[#111111] rounded-2xl border border-[#262626]"
+            >
+              <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+                <img
+                  [alt]="article.author.name"
+                  class="w-24 h-24 rounded-2xl object-cover ring-4 ring-orange-500/20"
+                  [src]="article.author.avatar"
+                />
+                <div class="text-center sm:text-right flex-1">
+                  <span class="text-xs text-orange-500 font-semibold uppercase tracking-wider"
+                    >كاتب المقال</span
+                  >
+                  <h3 class="text-xl font-bold text-white mt-1">{{ article.author.name }}</h3>
+                  <p class="text-neutral-500 text-sm mb-3">{{ article.author.role }}</p>
+                  <p class="text-neutral-400 text-sm leading-relaxed">{{ article.excerpt }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- الشريط الجانبي -->
+          <aside class="order-1 lg:order-2">
+            <div class="lg:sticky lg:top-24 space-y-6">
+              <!-- محتويات المقال -->
+              <div class="p-6 bg-[#111111] rounded-2xl border border-[#262626]">
+                <div class="flex items-center gap-3 mb-5">
+                  <div
+                    class="w-10 h-10 bg-orange-500/10 rounded-xl flex items-center justify-center border border-orange-500/30"
+                  >
+                    <i class="fa-solid fa-list text-orange-500"></i>
+                  </div>
+                  <h3 class="font-bold text-white">محتويات المقال</h3>
+                </div>
+                <nav class="space-y-2">
+                  @for (section of sections; track section.id; let i = $index) {
+                    <a
+                      routerLink="."
+                      [fragment]="section.id"
+                      class="flex items-center gap-3 p-3 rounded-xl text-neutral-400 hover:text-orange-500 hover:bg-orange-500/5 transition-all duration-300 group"
+                    >
+                      <span
+                        class="flex items-center justify-center w-6 h-6 bg-[#1a1a1a] rounded-lg text-xs font-bold text-neutral-500 group-hover:bg-orange-500/10 group-hover:text-orange-500 transition-colors"
+                      >
+                        {{ i + 1 }}
+                      </span>
+                      <span class="text-sm">{{ section.title }}</span>
+                    </a>
+                  }
+                </nav>
+              </div>
+
+              <!-- معلومات سريعة -->
+              <div class="p-6 bg-[#111111] rounded-2xl border border-[#262626]">
+                <div class="grid grid-cols-2 gap-4">
+                  <div class="text-center p-4 bg-[#0a0a0a] rounded-xl">
+                    <i class="fa-regular fa-clock text-orange-500 text-xl mb-2"></i>
+                    <p class="text-white font-bold">{{ article.readTime }}</p>
+                    <p class="text-neutral-500 text-xs">وقت القراءة</p>
+                  </div>
+                  <div class="text-center p-4 bg-[#0a0a0a] rounded-xl">
+                    <i class="fa-regular fa-calendar text-orange-500 text-xl mb-2"></i>
+                    <p class="text-white font-bold text-sm">{{ article.date }}</p>
+                    <p class="text-neutral-500 text-xs">تاريخ النشر</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- الاشتراك -->
+              <div
+                class="p-6 bg-linear-to-br from-orange-500/10 to-yellow-500/5 rounded-2xl border border-orange-500/20"
+              >
+                <div class="text-center">
+                  <div
+                    class="w-14 h-14 bg-orange-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4"
+                  >
+                    <i class="fa-solid fa-envelope text-orange-500 text-xl"></i>
+                  </div>
+                  <h3 class="font-bold text-white mb-2">لا تفوّت جديدنا</h3>
+                  <p class="text-neutral-400 text-sm mb-4">اشترك للحصول على أحدث المقالات</p>
+                  <a
+                    class="block w-full py-3 bg-orange-500 text-white font-semibold rounded-xl hover:bg-orange-600 transition-colors text-center"
+                    routerLink="/blog"
+                  >
+                    تصفح المزيد
+                  </a>
+                </div>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <!-- مقالات مقترحة -->
+        @if (relatedArticles.length > 0) {
+          <div class="mt-20 pt-12 border-t border-[#262626]">
+            <div class="flex items-center justify-between mb-10">
+              <div class="flex items-center gap-4">
+                <span
+                  class="w-12 h-12 bg-orange-500/10 rounded-2xl flex items-center justify-center border border-orange-500/30"
+                >
+                  <i class="fa-solid fa-images text-orange-500 text-xl"></i>
+                </span>
+                <div>
+                  <h2 class="text-2xl font-bold text-white">مقالات قد تعجبك</h2>
+                  <p class="text-neutral-500 text-sm">استكشف المزيد من المحتوى المميز</p>
+                </div>
+              </div>
+              <a
+                class="hidden sm:flex items-center gap-2 text-orange-500 hover:text-orange-400 transition-colors group"
+                routerLink="/blog"
+              >
+                عرض الكل
+                <i
+                  class="fa-solid fa-arrow-left group-hover:-translate-x-1 transition-transform"
+                ></i>
+              </a>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              @for (related of relatedArticles; track related.slug) {
+                <a
+                  class="group relative bg-[#111111] rounded-2xl overflow-hidden border border-[#262626] hover:border-orange-500/30 transition-all duration-500 block"
+                  [routerLink]="['/blog', related.slug]"
+                >
+                  <div class="relative h-48 overflow-hidden">
+                    <img
+                      [alt]="related.title"
+                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      [src]="related.image"
+                    />
+                    <div
+                      class="absolute inset-0 bg-linear-to-t from-[#111111] to-transparent"
+                    ></div>
+                    <span
+                      class="absolute top-4 right-4 px-3 py-1 bg-orange-500 text-white text-xs font-bold rounded-full"
+                      >{{ related.category }}</span
+                    >
+                  </div>
+                  <div class="p-5">
+                    <h3
+                      class="font-bold text-white group-hover:text-orange-500 transition-colors line-clamp-2 mb-3"
+                    >
+                      {{ related.title }}
+                    </h3>
+                    <div class="flex items-center justify-between text-sm text-neutral-500">
+                      <span class="flex items-center gap-2">
+                        <img
+                          [alt]="related.author.name"
+                          class="w-6 h-6 rounded-full"
+                          [src]="related.author.avatar"
+                        />
+                        {{ related.author.name }}
+                      </span>
+                      <span>{{ related.readTime }}</span>
+                    </div>
+                  </div>
+                </a>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </article>
+  </main>
+} @else {
+  <div class="min-h-screen flex items-center justify-center bg-[#0a0a0a] text-neutral-400">
+    جاري تحميل المقالة...
+  </div>
+}
