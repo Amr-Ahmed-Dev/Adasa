@@ -1,0 +1,1 @@
+import{c as o}from"./chunk-GAVCS6WP.js";import{M as r,P as e}from"./chunk-MCCQYDO4.js";var i=class t{constructor(n){this.http=n}http;getPosts(){return this.http.get("/data/posts.json")}static \u0275fac=function(s){return new(s||t)(e(o))};static \u0275prov=r({token:t,factory:t.\u0275fac,providedIn:"root"})};export{i as a};
