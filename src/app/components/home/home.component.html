@@ -465,6 +465,7 @@
               >
                 <path
                   stroke-linecap="round"
+                  routerLink="/blog?category=بورتريه"
                   stroke-linejoin="round"
                   stroke-width="2"
                   d="M9 5l7 7-7 7"
@@ -475,7 +476,6 @@
         </a>
         <a
           class="group relative block p-6 rounded-2xl bg-[#161616] border border-[#262626] overflow-hidden hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-1"
-          routerLink="/blog?category=بورتريه"
           style="animation-delay: 100ms"
         >
           <div
@@ -657,262 +657,251 @@
     </div>
   </section>
 
-  <section class="py-24 bg-[#0a0a0a] relative overflow-hidden">
-    <div
-      class="absolute bottom-0 left-0 w-1/3 h-full bg-linear-to-r from-orange-500/5 to-transparent"
-    ></div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
-        <div>
-          <span class="section-label mb-4">
-            <span class="relative flex h-2 w-2 ml-2">
-              <span
-                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75"
-              ></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span> </span
-            >الأحدث
-          </span>
-          <h2 class="section-title text-white">أحدث المقالات</h2>
-          <p class="section-subtitle max-w-lg">محتوى جديد طازج من المطبعة</p>
-        </div>
-        <a
-          class="group inline-flex items-center gap-2 text-orange-500 font-semibold hover:text-orange-400 transition-colors"
-          routerLink="/blog"
-          >عرض جميع المقالات<svg
-            class="w-5 h-5 group-hover:-translate-x-1 transition-transform rotate-180"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M17 8l4 4m0 0l-4 4m4-4H3"
-            ></path></svg
-        ></a>
+  <section class="py-24 bg-[#111111] relative border-y border-[#262626]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="section-label mb-4">
+          <span class="relative flex h-2 w-2 ml-2">
+            <span
+              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75"
+            ></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span> </span
+          >التصنيفات
+        </span>
+        <h2 class="section-title text-white">استكشف حسب الموضوع</h2>
+        <p class="section-subtitle max-w-lg mx-auto">اعثر على محتوى مصمم حسب اهتماماتك</p>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <article class="group card overflow-hidden" style="animation-delay: 0ms">
-          <a class="block" routerLink="/blog/camera-settings-basics">
-            <div class="relative h-52 overflow-hidden">
-              <img
-                alt="أساسيات إعدادات الكاميرا: مثلث التعريض الضوئي"
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800&amp;h=400&amp;fit=crop"
-              />
-              <div
-                class="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              ></div>
-              <div class="absolute top-4 right-4">
-                <span
-                  class="px-3 py-1 bg-[#0a0a0a]/80 backdrop-blur-sm text-white text-xs font-semibold rounded-full border border-[#333333]"
-                  >تقنيات</span
-                >
-              </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <a
+          class="group relative block p-6 rounded-2xl bg-[#161616] border border-[#262626] overflow-hidden hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-1"
+          [routerLink]="['/blog']"
+          [queryParams]="{ category: 'إضاءة' }"
+          style="animation-delay: 0ms"
+        >
+          <div
+            class="absolute inset-0 bg-linear-to-br from-orange-500 to-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          ></div>
+          <div class="relative z-10">
+            <div
+              class="w-12 h-12 bg-orange-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-white/20 transition-colors duration-300 border border-orange-500/20 group-hover:border-transparent"
+            >
+              <i
+                class="fa-solid fa-sun text-xl text-orange-500 group-hover:text-white transition-colors duration-300"
+              ></i>
             </div>
-            <div class="p-6">
-              <div class="flex items-center gap-3 text-sm text-neutral-500 mb-3">
-                <span class="flex items-center gap-1"
-                  ><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                    ></path></svg
-                  >7 دقائق للقراءة</span
-                >
-                <span class="w-1 h-1 bg-neutral-600 rounded-full"></span><span>٨ يناير ٢٠٢٦</span>
-              </div>
-              <h3
-                class="text-xl font-bold text-white mb-3 group-hover:text-orange-500 transition-colors duration-300 line-clamp-2 leading-tight"
+            <h3
+              class="font-bold text-lg text-white group-hover:text-white transition-colors duration-300 mb-1"
+            >
+              إضاءة
+            </h3>
+            <p
+              class="text-sm text-neutral-500 group-hover:text-white/80 transition-colors duration-300"
+            >
+              3 مقالة
+            </p>
+            <div
+              class="absolute top-6 left-6 w-8 h-8 rounded-full bg-[#262626] flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:bg-white/20 transition-all duration-300"
+            >
+              <svg
+                class="w-4 h-4 text-white rotate-180"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                أساسيات إعدادات الكاميرا: مثلث التعريض الضوئي
-              </h3>
-              <p class="text-neutral-400 mb-5 line-clamp-2 text-sm leading-relaxed">
-                افهم العلاقة بين فتحة العدسة وسرعة الغالق وحساسية ISO للتحكم الكامل في صورك.
-              </p>
-              <div class="flex items-center justify-between pt-4 border-t border-[#262626]">
-                <div class="flex items-center gap-3">
-                  <img
-                    alt="داود خالد"
-                    class="w-9 h-9 rounded-full object-cover ring-2 ring-[#262626]"
-                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&amp;h=100&amp;fit=crop&amp;crop=face"
-                  />
-                  <div>
-                    <p class="text-sm font-medium text-white">داود خالد</p>
-                    <p class="text-xs text-neutral-500">مدرب تصوير</p>
-                  </div>
-                </div>
-                <div
-                  class="w-8 h-8 rounded-full bg-orange-500/10 flex items-center justify-center group-hover:bg-orange-500 transition-colors duration-300 border border-orange-500/20 group-hover:border-transparent"
-                >
-                  <svg
-                    class="w-4 h-4 text-orange-500 group-hover:text-white transition-colors duration-300 rotate-180"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 5l7 7-7 7"
-                    ></path>
-                  </svg>
-                </div>
-              </div>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                ></path>
+              </svg>
             </div>
-          </a>
-        </article>
-        <article class="group card overflow-hidden" style="animation-delay: 100ms">
-          <a class="block" routerLink="/blog/photo-composition-rules">
-            <div class="relative h-52 overflow-hidden">
-              <img
-                alt="قواعد التكوين الفوتوغرافي: كيف تجعل صورك أكثر جاذبية"
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=800&amp;h=400&amp;fit=crop"
-              />
-              <div
-                class="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              ></div>
-              <div class="absolute top-4 right-4">
-                <span
-                  class="px-3 py-1 bg-[#0a0a0a]/80 backdrop-blur-sm text-white text-xs font-semibold rounded-full border border-[#333333]"
-                  >تقنيات</span
-                >
-              </div>
+          </div>
+        </a>
+        <a
+          class="group relative block p-6 rounded-2xl bg-[#161616] border border-[#262626] overflow-hidden hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-1"
+          [routerLink]="['/blog']"
+          [queryParams]="{ category: 'بورتريه' }"
+          style="animation-delay: 100ms"
+        >
+          <div
+            class="absolute inset-0 bg-linear-to-br from-orange-600 to-orange-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          ></div>
+          <div class="relative z-10">
+            <div
+              class="w-12 h-12 bg-orange-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-white/20 transition-colors duration-300 border border-orange-500/20 group-hover:border-transparent"
+            >
+              <i
+                class="fa-solid fa-user text-xl text-orange-500 group-hover:text-white transition-colors duration-300"
+              ></i>
             </div>
-            <div class="p-6">
-              <div class="flex items-center gap-3 text-sm text-neutral-500 mb-3">
-                <span class="flex items-center gap-1"
-                  ><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                    ></path></svg
-                  >9 دقائق للقراءة</span
-                >
-                <span class="w-1 h-1 bg-neutral-600 rounded-full"></span><span>٥ يناير ٢٠٢٦</span>
-              </div>
-              <h3
-                class="text-xl font-bold text-white mb-3 group-hover:text-orange-500 transition-colors duration-300 line-clamp-2 leading-tight"
+            <h3
+              class="font-bold text-lg text-white group-hover:text-white transition-colors duration-300 mb-1"
+            >
+              بورتريه
+            </h3>
+            <p
+              class="text-sm text-neutral-500 group-hover:text-white/80 transition-colors duration-300"
+            >
+              3 مقالة
+            </p>
+            <div
+              class="absolute top-6 left-6 w-8 h-8 rounded-full bg-[#262626] flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:bg-white/20 transition-all duration-300"
+            >
+              <svg
+                class="w-4 h-4 text-white rotate-180"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                قواعد التكوين الفوتوغرافي: كيف تجعل صورك أكثر جاذبية
-              </h3>
-              <p class="text-neutral-400 mb-5 line-clamp-2 text-sm leading-relaxed">
-                تعلم قواعد التكوين الأساسية التي يستخدمها المصورون المحترفون لإنشاء صور مؤثرة
-                بصرياً.
-              </p>
-              <div class="flex items-center justify-between pt-4 border-t border-[#262626]">
-                <div class="flex items-center gap-3">
-                  <img
-                    alt="ليث محمود"
-                    class="w-9 h-9 rounded-full object-cover ring-2 ring-[#262626]"
-                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&amp;h=100&amp;fit=crop&amp;crop=face"
-                  />
-                  <div>
-                    <p class="text-sm font-medium text-white">ليث محمود</p>
-                    <p class="text-xs text-neutral-500">فنان بصري</p>
-                  </div>
-                </div>
-                <div
-                  class="w-8 h-8 rounded-full bg-orange-500/10 flex items-center justify-center group-hover:bg-orange-500 transition-colors duration-300 border border-orange-500/20 group-hover:border-transparent"
-                >
-                  <svg
-                    class="w-4 h-4 text-orange-500 group-hover:text-white transition-colors duration-300 rotate-180"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 5l7 7-7 7"
-                    ></path>
-                  </svg>
-                </div>
-              </div>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                ></path>
+              </svg>
             </div>
-          </a>
-        </article>
-        <article class="group card overflow-hidden" style="animation-delay: 200ms">
-          <a class="block" routerLink="/blog/mobile-photography-tips">
-            <div class="relative h-52 overflow-hidden">
-              <img
-                alt="تصوير الهاتف المحمول: كيف تلتقط صوراً احترافية بهاتفك"
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-                src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&amp;h=400&amp;fit=crop"
-              />
-              <div
-                class="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-              ></div>
-              <div class="absolute top-4 right-4">
-                <span
-                  class="px-3 py-1 bg-[#0a0a0a]/80 backdrop-blur-sm text-white text-xs font-semibold rounded-full border border-[#333333]"
-                  >معدات</span
-                >
-              </div>
+          </div>
+        </a>
+        <a
+          class="group relative block p-6 rounded-2xl bg-[#161616] border border-[#262626] overflow-hidden hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-1"
+          [routerLink]="['/blog']"
+          [queryParams]="{ category: 'مناظر طبيعية' }"
+          style="animation-delay: 200ms"
+        >
+          <div
+            class="absolute inset-0 bg-linear-to-br from-orange-500 to-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          ></div>
+          <div class="relative z-10">
+            <div
+              class="w-12 h-12 bg-orange-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-white/20 transition-colors duration-300 border border-orange-500/20 group-hover:border-transparent"
+            >
+              <i
+                class="fa-solid fa-mountain-sun text-xl text-orange-500 group-hover:text-white transition-colors duration-300"
+              ></i>
             </div>
-            <div class="p-6">
-              <div class="flex items-center gap-3 text-sm text-neutral-500 mb-3">
-                <span class="flex items-center gap-1"
-                  ><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                    ></path></svg
-                  >8 دقائق للقراءة</span
-                >
-                <span class="w-1 h-1 bg-neutral-600 rounded-full"></span><span>٣ يناير ٢٠٢٦</span>
-              </div>
-              <h3
-                class="text-xl font-bold text-white mb-3 group-hover:text-orange-500 transition-colors duration-300 line-clamp-2 leading-tight"
+            <h3
+              class="font-bold text-lg text-white group-hover:text-white transition-colors duration-300 mb-1"
+            >
+              مناظر طبيعية
+            </h3>
+            <p
+              class="text-sm text-neutral-500 group-hover:text-white/80 transition-colors duration-300"
+            >
+              2 مقالة
+            </p>
+            <div
+              class="absolute top-6 left-6 w-8 h-8 rounded-full bg-[#262626] flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:bg-white/20 transition-all duration-300"
+            >
+              <svg
+                class="w-4 h-4 text-white rotate-180"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                تصوير الهاتف المحمول: كيف تلتقط صوراً احترافية بهاتفك
-              </h3>
-              <p class="text-neutral-400 mb-5 line-clamp-2 text-sm leading-relaxed">
-                اكتشف كيف تحول هاتفك الذكي إلى أداة تصوير قوية مع هذه النصائح والتقنيات.
-              </p>
-              <div class="flex items-center justify-between pt-4 border-t border-[#262626]">
-                <div class="flex items-center gap-3">
-                  <img
-                    alt="جمال عبدالله"
-                    class="w-9 h-9 rounded-full object-cover ring-2 ring-[#262626]"
-                    src="https://images.unsplash.com/photo-1463453091185-61582044d556?w=100&amp;h=100&amp;fit=crop&amp;crop=face"
-                  />
-                  <div>
-                    <p class="text-sm font-medium text-white">جمال عبدالله</p>
-                    <p class="text-xs text-neutral-500">مصور ومراجع تقني</p>
-                  </div>
-                </div>
-                <div
-                  class="w-8 h-8 rounded-full bg-orange-500/10 flex items-center justify-center group-hover:bg-orange-500 transition-colors duration-300 border border-orange-500/20 group-hover:border-transparent"
-                >
-                  <svg
-                    class="w-4 h-4 text-orange-500 group-hover:text-white transition-colors duration-300 rotate-180"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M9 5l7 7-7 7"
-                    ></path>
-                  </svg>
-                </div>
-              </div>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                ></path>
+              </svg>
             </div>
-          </a>
-        </article>
+          </div>
+        </a>
+        <a
+          class="group relative block p-6 rounded-2xl bg-[#161616] border border-[#262626] overflow-hidden hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-1"
+          [routerLink]="['/blog']"
+          [queryParams]="{ category: 'تقنيات' }"
+          style="animation-delay: 300ms"
+        >
+          <div
+            class="absolute inset-0 bg-linear-to-br from-orange-500 to-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          ></div>
+          <div class="relative z-10">
+            <div
+              class="w-12 h-12 bg-orange-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-white/20 transition-colors duration-300 border border-orange-500/20 group-hover:border-transparent"
+            >
+              <i
+                class="fa-solid fa-sliders text-xl text-orange-500 group-hover:text-white transition-colors duration-300"
+              ></i>
+            </div>
+            <h3
+              class="font-bold text-lg text-white group-hover:text-white transition-colors duration-300 mb-1"
+            >
+              تقنيات
+            </h3>
+            <p
+              class="text-sm text-neutral-500 group-hover:text-white/80 transition-colors duration-300"
+            >
+              5 مقالة
+            </p>
+            <div
+              class="absolute top-6 left-6 w-8 h-8 rounded-full bg-[#262626] flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:bg-white/20 transition-all duration-300"
+            >
+              <svg
+                class="w-4 h-4 text-white rotate-180"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </a>
+        <a
+          class="group relative block p-6 rounded-2xl bg-[#161616] border border-[#262626] overflow-hidden hover:border-orange-500/30 transition-all duration-500 hover:-translate-y-1"
+          [routerLink]="['/blog']"
+          [queryParams]="{ category: 'معدات' }"
+          style="animation-delay: 400ms"
+        >
+          <div
+            class="absolute inset-0 bg-linear-to-br from-orange-500 to-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          ></div>
+          <div class="relative z-10">
+            <div
+              class="w-12 h-12 bg-orange-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-white/20 transition-colors duration-300 border border-orange-500/20 group-hover:border-transparent"
+            >
+              <i
+                class="fa-solid fa-sun text-xl text-orange-500 group-hover:text-white transition-colors duration-300"
+              ></i>
+            </div>
+            <h3
+              class="font-bold text-lg text-white group-hover:text-white transition-colors duration-300 mb-1"
+            >
+              معدات
+            </h3>
+            <p
+              class="text-sm text-neutral-500 group-hover:text-white/80 transition-colors duration-300"
+            >
+              3 مقالة
+            </p>
+            <div
+              class="absolute top-6 left-6 w-8 h-8 rounded-full bg-[#262626] flex items-center justify-center opacity-0 group-hover:opacity-100 group-hover:bg-white/20 transition-all duration-300"
+            >
+              <svg
+                class="w-4 h-4 text-white rotate-180"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </a>
       </div>
     </div>
   </section>
