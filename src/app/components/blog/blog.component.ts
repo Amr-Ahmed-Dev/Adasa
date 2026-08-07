@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterOutlet, RouterLink, NavigationEnd } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { filter } from 'rxjs/operators';
 import { PostsService, Post } from '../../services/posts.service';
 
 @Component({
   selector: 'app-blog',
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLink, FormsModule],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.css',
 })
 export class BlogComponent implements OnInit {
   isArticleOpen = false;
   selectedCategory: string | null = null;
+  searchTerm = '';
 
   categories: string[] = [];
   articles: Post[] = [];
@@ -53,6 +55,11 @@ export class BlogComponent implements OnInit {
     });
   }
 
+  onSearchChange(): void {
+    this.currentPage = 1;
+    this.applyFilter();
+  }
+
   goToPage(page: number): void {
     if (page < 1 || page > this.totalPages) return;
     this.currentPage = page;
@@ -64,10 +71,18 @@ export class BlogComponent implements OnInit {
   }
 
   private applyFilter(): void {
-    this.filteredArticles = this.selectedCategory
+    let result = this.selectedCategory
       ? this.articles.filter((a) => a.category === this.selectedCategory)
       : this.articles;
 
+    const term = this.searchTerm.trim().toLowerCase();
+    if (term) {
+      result = result.filter(
+        (a) => a.title.toLowerCase().includes(term) || a.excerpt.toLowerCase().includes(term),
+      );
+    }
+
+    this.filteredArticles = result;
     this.updatePagination();
   }
 
