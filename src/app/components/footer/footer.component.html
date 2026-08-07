@@ -46,7 +46,7 @@
             </svg>
           </a>
           <a
-            href="www.linkedin.com/in/amr-a-gomaa-80803a418"
+            href="https://www.linkedin.com/in/amr-a-gomaa-80803a418/"
             target="_blank"
             rel="noopener noreferrer"
             class="w-10 h-10 bg-[#161616] border border-[#262626] hover:bg-linear-to-br hover:from-orange-500 hover:to-orange-600 hover:border-transparent rounded-xl flex items-center justify-center text-neutral-500 hover:text-white transition-all duration-300 hover:scale-110"
@@ -154,7 +154,8 @@
           <li>
             <a
               class="text-sm text-neutral-500 hover:text-orange-500 transition-colors duration-300 flex items-center gap-2 group"
-              routerLink="/blog?category=إضاءة"
+              [routerLink]="['/blog']"
+              [queryParams]="{ category: 'إضاءة' }"
             >
               <svg
                 class="w-4 h-4 opacity-0 -mr-4 group-hover:opacity-100 group-hover:mr-0 transition-all duration-300 text-orange-500 rotate-180"
@@ -174,7 +175,8 @@
           <li>
             <a
               class="text-sm text-neutral-500 hover:text-orange-500 transition-colors duration-300 flex items-center gap-2 group"
-              routerLink="/blog?category=بورتريه"
+              [routerLink]="['/blog']"
+              [queryParams]="{ category: 'بورتريه' }"
             >
               <svg
                 class="w-4 h-4 opacity-0 -mr-4 group-hover:opacity-100 group-hover:mr-0 transition-all duration-300 text-orange-500 rotate-180"
@@ -194,7 +196,8 @@
           <li>
             <a
               class="text-sm text-neutral-500 hover:text-orange-500 transition-colors duration-300 flex items-center gap-2 group"
-              routerLink="/blog?category=مناظر طبيعية"
+              [routerLink]="['/blog']"
+              [queryParams]="{ category: 'مناظر طبيعية' }"
             >
               <svg
                 class="w-4 h-4 opacity-0 -mr-4 group-hover:opacity-100 group-hover:mr-0 transition-all duration-300 text-orange-500 rotate-180"
@@ -214,7 +217,8 @@
           <li>
             <a
               class="text-sm text-neutral-500 hover:text-orange-500 transition-colors duration-300 flex items-center gap-2 group"
-              routerLink="/blog?category=تقنيات"
+              [routerLink]="['/blog']"
+              [queryParams]="{ category: 'تقنيات' }"
             >
               <svg
                 class="w-4 h-4 opacity-0 -mr-4 group-hover:opacity-100 group-hover:mr-0 transition-all duration-300 text-orange-500 rotate-180"
