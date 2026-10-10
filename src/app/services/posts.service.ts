@@ -32,6 +32,6 @@ export interface Category {
 export class PostsService {
   constructor(private http: HttpClient) {}
   getPosts(): Observable<PostsData> {
-    return this.http.get<PostsData>('/data/posts.json');
+    return this.http.get<PostsData>('data/posts.json');
   }
 }
